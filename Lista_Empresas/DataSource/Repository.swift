@@ -69,16 +69,13 @@ final class Repository {
         //Chamando a funcão POST
         postRequest(url: url, params: params){
             (result, err)  in
-            //Aqui você tem seu resultado
             if let res:Bool = (result?.values.first as? Bool) {
                 if(res) {
-                    //Aqui res podera assumir dois valores, true ou false
                     print("sua requisicao foi realizada com sucesso")
                     DispatchQueue.main.async {
                         self.coordinator.showListScreen()
                     }
                 } else {
-                    //Aqui voce pode tratar os erros
                     print("a requisicao nao funcionou")
                 }
             }
