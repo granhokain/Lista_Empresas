@@ -14,11 +14,12 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var senhaTextField: UITextField!
     
-    let repositorio = Repository()
+    var loginPresenter = LoginPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     @IBAction func loginButton(_ sender: Any) {
@@ -28,7 +29,11 @@ class LoginViewController: UIViewController {
             return
         }
         
-        repositorio.requestLogin(email: email, senha: password);
+        loginPresenter.loginRequest(with: email, password: password)
+    }
+    
+    @objc func DismissKeyboard(){
+    view.endEditing(true)
     }
     
 }
