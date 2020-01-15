@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Authenticable: class {
-    func login(email: String, password: String, completion: APIRequest.FDCResponseBlock<User>?)
-    func logout(completion: APIRequest.FDCResponseBlock<JSONDictionary>?)
+    func login(email: String, password: String, completion: APIRequest.EmpresasResponseBlock<User>?)
+    func logout(completion: APIRequest.EmpresasResponseBlock<JSONDictionary>?)
 }

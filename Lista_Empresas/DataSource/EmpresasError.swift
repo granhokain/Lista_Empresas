@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum FDCTypeError {
+enum EmpresasTypeError {
     case connection, server, custom
 }
 
-class FDCError {
+class EmpresasError {
     var code: Int!
     var message: String!
-    var type: FDCTypeError!
+    var type: EmpresasTypeError!
     
     init?(response: Any?, error: API.RequestError?) {
         

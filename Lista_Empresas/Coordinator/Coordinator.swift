@@ -10,18 +10,11 @@ import Foundation
 import UIKit
 
 final class Coordinator {
-    
-    let viewController = ListaViewController()
-    
-    func showListScreen(){
-        
+
+    func showListScreen(viewController: UIViewController){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        viewController.dismiss(animated: true, completion: nil)
-        
-        let listaVC = storyboard.instantiateViewController(withIdentifier: "listaEmpresas") as! ListaViewController
-        
-        viewController.present(listaVC, animated: true, completion: nil)
-        
+        let controller = storyboard.instantiateViewController(withIdentifier: "listaEmpresas")
+        controller.modalPresentationStyle = .fullScreen
+        viewController.present(controller, animated: true, completion: nil)
     }
 }

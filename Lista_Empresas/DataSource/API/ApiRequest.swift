@@ -11,18 +11,12 @@ import KeychainSwift
 
 public class APIRequest {
     
-  typealias FDCResponseBlock<T> = (_ response: T?, _ error: FDCError?, _ cache: Bool) -> Void
+  typealias EmpresasResponseBlock<T> = (_ response: T?, _ error: EmpresasError?, _ cache: Bool) -> Void
   typealias ResponseBlock<T> = (_ response: T?, _ error: API.RequestError?, _ cache: Bool) -> Void
   typealias ProgressBlock = (_ totalBytesSent: Int64, _ totalBytesExpectedToSend: Int64) -> Void
   
   struct APIConstants {
     static let baseURL = URL(string: "https://empresas.ioasys.com.br/")! //homolog
-    static let mediaBaseURL = URL(string: "https://empresas.ioasys.com.br")! //image homolog
-    static let identityServerBaseURL = URL(string: "https://acessoqa.fdc.org.br/connect/") //homolog
-
-//    static let baseURL = URL(string: "https://apifdc4u.fdc.org.br/")! // Production
-//    static let mediaBaseURL = URL(string: "https://apifdc4u.fdc.org.br")! // Production
-//    static let identityServerBaseURL = URL(string: "https://acesso.fdc.org.br/connect/") //Production
 
     static let apiPath = "api/v1/"
     static let authorizationHeader = "Authorization"
@@ -147,31 +141,12 @@ public class APIRequest {
     let error = API.RequestError(responseObject: responseObject, urlResponse: response as? HTTPURLResponse, originalError: error)
     
     if !self.suppressErrorAlert {
-//        if (error.urlResponse?.statusCode == 401) {
-//            SessionHelper.Logout()
-//            return
-//        }
-        
-//      self.showErrorMessage(error: error)
         
     }
     
     if let error = error.urlResponse {
         self.errorStatusCode = error.statusCode
     }
-    
-    //let interceptor = Interceptor(response: responseObject, error: error, request: self)
-    //APICalls.shared.isMakeRequest = false
-    
-//    if Thread.isMainThread {
-//        interceptor.execute()
-//      self.completionBlock?(responseObject, error, false)
-//    } else {
-//      DispatchQueue.main.async {
-//        interceptor.execute()
-//        self.completionBlock?(responseObject, error, false)
-//      }
-//    }
   }
   
   func makeRequest() {

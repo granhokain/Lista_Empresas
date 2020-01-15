@@ -25,12 +25,13 @@ class LoginPresenter {
     
     func loginRequest(with email: String, password: String) {
         self.loginView?.startLoading()
-        repository.login(email: email, password: password) { (newEvents, error, cache) in
+        repository.login(email: email, password: password) { (userInvestor, error, cache) in
             self.loginView?.stopLoading()
-            if let newEvents = newEvents {
-                self.loginView?.successfulRequestLogin(user: newEvents)
+            if let user = userInvestor {
+                self.loginView?.successfulRequestLogin(user: user)
 
             } else if let error = error {
+                self.loginView?.stopLoading()
                 self.loginView?.showAlert(with: error.message!)
             }
         }

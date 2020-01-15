@@ -8,22 +8,28 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var senhaTextField: UITextField!
+    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var loginPresenter = LoginPresenter()
     var coordinator = Coordinator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadingIndicator.hidesWhenStopped = true
         loginPresenter.attachView(self)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     @IBAction func loginButton(_ sender: Any) {
@@ -43,22 +49,23 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: LoginProtocol {
     func startLoading() {
-        print("COMEÇOU CARREGAR")
-        self.showHUD()
+        loadingIndicator.startAnimating()
     }
     
     func stopLoading() {
-        print("TERMINOU DE CARREGAR")
-        self.hideHUD()
+        loadingIndicator.stopAnimating()
     }
     
     func successfulRequestLogin(user: User) {
-        print("Resultado: \(user)")
-        coordinator.showListScreen()
+        coordinator.showListScreen(viewController: self)
     }
     
     func showAlert(with message: String) {
-        self.showAlertBar(message: message)
+        let mensagem = "Não foi possível realizar o login. Tente novamente mais tarde."
+        let alerta = UIAlertController(title: "Algo deu errado…", message: mensagem, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel) { _ in }
+        alerta.addAction(ok)
+        self.present(alerta, animated: true, completion: nil)
     }
     
     
