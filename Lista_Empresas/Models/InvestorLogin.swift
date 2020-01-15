@@ -6,17 +6,17 @@
 //  Copyright © 2020 Rafael Martins. All rights reserved.
 //
 
-import Foundation
-struct InvestorLogin: Codable {
-    
-    var investor: Investor
-    var enterprise: String?
-    var success: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case investor = "investor"
-        case enterprise = "enterprise"
-        case success = "success"
-    }
-}
+//import Foundation
+//struct InvestorLogin: Codable {
+//    
+//    var investor: Investor
+//    var enterprise: String?
+//    var success: Bool
+//    
+//    enum CodingKeys: String, CodingKey {
+//        
+//        case investor = "investor"
+//        case enterprise = "enterprise"
+//        case success = "success"
+//    }
+//}

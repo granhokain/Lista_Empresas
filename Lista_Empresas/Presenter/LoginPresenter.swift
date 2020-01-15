@@ -11,25 +11,28 @@ import Foundation
 protocol LoginProtocol: AnyObject {
     func startLoading()
     func stopLoading()
-    func successfulRequestLogin(user: InvestorLogin)
+    func successfulRequestLogin(user: User)
     func showAlert(with message: String)
 }
 
 class LoginPresenter {
     weak private var loginView: LoginProtocol?
-    let repository = LoginService()
+    let repository = AuthenticationService()
     
     func attachView(_ view: LoginProtocol) {
         self.loginView = view
     }
     
     func loginRequest(with email: String, password: String) {
-        repository.requestLogin(email: email, senha: password, sucesso: { user in
-            self.loginView?.successfulRequestLogin(user: user)
-            print(user)
-        }, falha: { erro in
-            self.loginView?.showAlert(with: (erro))
-            print(erro)
-        })
+        self.loginView?.startLoading()
+        repository.login(email: email, password: password) { (newEvents, error, cache) in
+            self.loginView?.stopLoading()
+            if let newEvents = newEvents {
+                self.loginView?.successfulRequestLogin(user: newEvents)
+
+            } else if let error = error {
+                self.loginView?.showAlert(with: error.message!)
+            }
+        }
     }
 }

@@ -7,7 +7,8 @@
 //
 
 import Foundation
-struct Investor: Codable {
+
+struct Investor: Mappable {
     
     var id: Int
     var investor_name: String
@@ -19,25 +20,33 @@ struct Investor: Codable {
     var portfolio_value: Double
     var first_access: Bool
     var super_angel: Bool
-    var portfolio: Portfolio
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case id = "id"
-        case investor_name = "investor_name"
-        case email = "email"
-        case city = "city"
-        case country = "country"
-        case balance = "balance"
-        case photo = "photo"
-        case portfolio_value = "portfolio_value"
-        case first_access = "first_access"
-        case super_angel = "super_angel"
-        case portfolio = "portfolio"
-    }
-}
+    //var portfolio: Portfolio
 
-struct Portfolio: Codable {
-    let enterprises_number: Int
-    let enterprises: [String]
+  init(mapper: Mapper) {
+    self.id = mapper.keyPath(StringMapperKeys.InvestorKeys.id)
+    self.investor_name = mapper.keyPath(StringMapperKeys.InvestorKeys.investor_name)
+    self.email = mapper.keyPath(StringMapperKeys.InvestorKeys.email)
+    self.city = mapper.keyPath(StringMapperKeys.InvestorKeys.city)
+    self.country = mapper.keyPath(StringMapperKeys.InvestorKeys.country)
+    self.balance = mapper.keyPath(StringMapperKeys.InvestorKeys.balance)
+    self.photo = mapper.keyPath(StringMapperKeys.InvestorKeys.photo)
+    self.portfolio_value = mapper.keyPath(StringMapperKeys.InvestorKeys.portfolio_value)
+    self.first_access = mapper.keyPath(StringMapperKeys.InvestorKeys.first_access)
+    self.super_angel = mapper.keyPath(StringMapperKeys.InvestorKeys.super_angel)
+  }
+  
+  init() {
+    self.id = 0
+    self.investor_name = ""
+    self.email = ""
+    self.city = ""
+    self.country = ""
+    self.email = ""
+    self.photo = ""
+    self.balance = 0.0
+    self.portfolio_value = 0.0
+    self.first_access = false
+    self.super_angel = false
+  }
+  
 }

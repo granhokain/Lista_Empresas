@@ -1,0 +1,6 @@
+framework module Pods_Lista_Empresas {
+  umbrella header "Pods-Lista_Empresas-umbrella.h"
+
+  export *
+  module * { export * }
+}

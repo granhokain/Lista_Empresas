@@ -14,17 +14,26 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - KeychainSwift (19.0.0)
+  - lottie-ios (3.1.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - KeychainSwift
+  - lottie-ios
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+  trunk:
+    - KeychainSwift
+    - lottie-ios
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
 
-PODFILE CHECKSUM: 6add43c466a99fcbb2dfd57b87cb78307971b828
+PODFILE CHECKSUM: b811ee5a5f7233a7ec85d4fbd44b81e4dd1a7564
 
 COCOAPODS: 1.8.4

@@ -6,53 +6,266 @@
 //  Copyright © 2020 Rafael Martins. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import KeychainSwift
 
-final class ApiRequest {
+public class APIRequest {
     
-    let coordinator = Coordinator()
+  typealias FDCResponseBlock<T> = (_ response: T?, _ error: FDCError?, _ cache: Bool) -> Void
+  typealias ResponseBlock<T> = (_ response: T?, _ error: API.RequestError?, _ cache: Bool) -> Void
+  typealias ProgressBlock = (_ totalBytesSent: Int64, _ totalBytesExpectedToSend: Int64) -> Void
+  
+  struct APIConstants {
+    static let baseURL = URL(string: "https://empresas.ioasys.com.br/")! //homolog
+    static let mediaBaseURL = URL(string: "https://empresas.ioasys.com.br")! //image homolog
+    static let identityServerBaseURL = URL(string: "https://acessoqa.fdc.org.br/connect/") //homolog
+
+//    static let baseURL = URL(string: "https://apifdc4u.fdc.org.br/")! // Production
+//    static let mediaBaseURL = URL(string: "https://apifdc4u.fdc.org.br")! // Production
+//    static let identityServerBaseURL = URL(string: "https://acesso.fdc.org.br/connect/") //Production
+
+    static let apiPath = "api/v1/"
+    static let authorizationHeader = "Authorization"
+    static let authenticationHeaders = ["access-token", "uid", "client", "token-fdc", "refresh-token"]
+  }
+  
+  var errorStatusCode: Int?
+  var method: API.HTTPMethod
+  var path: String
+  var baseURL: URL
+  var parameters: [String: Any]?
+  var urlParameters: [String: Any]?
+  var extraHeaders: [String: String]?
+  
+  var cacheOption = API.CacheOption.both
+  var suppressErrorAlert = false
+  
+  var uploadBlock: ProgressBlock?
+  var downloadBlock: ProgressBlock?
+  var completionBlock: ResponseBlock<Any>?
+  
+  var parameterEncoder: ParameterEncoding.Type = API.JSONParameterEncoder.self
+  
+  private(set) var task: URLSessionDataTask?
+  
+  var shouldSaveInCache = true
+  var cacheFileName: String {
+    get {
+      return APICacheManager.shared.cacheFileNameWith(path: self.path, method: self.method.rawValue, parameters: self.parameters)
+    }
+  }
+  
+  init(method: API.HTTPMethod, path: String, parameters: [String: Any]?, urlParameters: [String: Any]?, cacheOption: API.CacheOption, completion: ResponseBlock<Any>?) {
     
-    func postRequest(url: String, params: [String: String],
-                     completion: @escaping ([String: Any]?, Error?) -> Void){
-        //URL válida
-        guard let URL = URL(string: url) else {
-            completion(nil, nil)
-            return
+    self.method = method
+    self.path = path
+    self.baseURL = APIConstants.baseURL.appendingPathComponent(APIConstants.apiPath)
+    self.parameters = parameters
+    self.urlParameters = urlParameters
+    self.extraHeaders = nil
+    self.cacheOption = cacheOption
+    self.uploadBlock = nil
+    self.downloadBlock = nil
+    self.completionBlock = completion
+    
+    // on initialization, didSet is not called. But we want didSet to be called
+    // on subclasses that implement it, so on this defer block all properties are
+    // set again so didSet is called.
+    defer {
+      self.method = method
+      self.path = path
+      self.baseURL = [self.baseURL][0]
+      self.parameters = parameters
+      self.urlParameters = urlParameters
+      self.extraHeaders = nil
+      self.cacheOption = cacheOption
+      self.uploadBlock = nil
+      self.downloadBlock = nil
+      self.completionBlock = completion
+    }
+  }
+  
+  func parse(_ data: Data?) -> Any? {
+    
+    if let data = data {
+      var responseObject = try? JSONSerialization.jsonObject(with: data, options: [])
+      
+      if responseObject == nil {
+        responseObject = String(data: data, encoding: .utf8)
+        if responseObject == nil {
+          return data
         }
-            
-        //Cria a representacão da requisição
-        let request = NSMutableURLRequest(url: URL)
-
-        //Converte as chaves em valores pares para os parametros em formato de String
-        let postString = params.map { "\($0.0)=\($0.1)" }.joined(separator: "&")
-
-        //Atribui à requisiçāo o método POST
-        request.httpMethod = "POST"
-
-        //Codifica o corpo da mensagem em "data" usando utf8
-        request.httpBody = postString.data(using: String.Encoding.utf8)
-
-
-        //Cria a tarefa de requisição
-        let task = URLSession.shared.dataTask(with: request as URLRequest) {
-            (data, response, error) in
-            do {
-
-                if let data = data {
-                    //A resposta chegou
-                    let response = try JSONSerialization.jsonObject(with: data, options: [])
-                    completion(response as? [String : Any], nil)
-                }
-                else {
-                    //Não houve resposta
-                    completion(nil, nil)
-                }
-            } catch let error as NSError {
-                //Houve um erro na comunicao com o servidor
-                completion(nil, error)
+      }
+      
+      return responseObject
+    }
+    
+    return nil
+  }
+  
+  func handleSuccess(data: Data?, response: URLResponse) {
+    
+    guard let response = response as? HTTPURLResponse else { return }
+    let responseObject = self.parse(data)
+    
+    NSLog("\n\n%@ %@", self.method.rawValue, response)
+    NSLog("%@", "\(String(describing: responseObject))")
+    
+    if let responseObject = responseObject, self.shouldSaveInCache {
+      APICacheManager.shared.write(data: responseObject, toCacheFile: self.cacheFileName)
+    }
+    
+    for authenticationHeader in APIConstants.authenticationHeaders {
+        if let headerValue = response.allHeaderFields[authenticationHeader] {
+            KeychainSwift().set(headerValue as! String, forKey: authenticationHeader)
+        }
+    }
+    
+    //APICalls.shared.isMakeRequest = false
+    
+    if Thread.isMainThread {
+      self.completionBlock?(responseObject, nil, false)
+    } else {
+      DispatchQueue.main.async {
+        self.completionBlock?(responseObject, nil, false)
+      }
+    }
+  }
+  
+  func handleError(data: Data?, response: URLResponse?, error: Error?) {
+    
+    // ignore error triggered when task is cancelled
+    if let error = error as? URLError, error.code == .cancelled {
+      return
+    }
+    
+    let responseObject = self.parse(data)
+    
+    NSLog("\n\n%@ %@", self.method.rawValue, response ?? "<nil>")
+    NSLog("%@", "\(String(describing: responseObject))")
+    
+    let error = API.RequestError(responseObject: responseObject, urlResponse: response as? HTTPURLResponse, originalError: error)
+    
+    if !self.suppressErrorAlert {
+//        if (error.urlResponse?.statusCode == 401) {
+//            SessionHelper.Logout()
+//            return
+//        }
+        
+//      self.showErrorMessage(error: error)
+        
+    }
+    
+    if let error = error.urlResponse {
+        self.errorStatusCode = error.statusCode
+    }
+    
+    //let interceptor = Interceptor(response: responseObject, error: error, request: self)
+    //APICalls.shared.isMakeRequest = false
+    
+//    if Thread.isMainThread {
+//        interceptor.execute()
+//      self.completionBlock?(responseObject, error, false)
+//    } else {
+//      DispatchQueue.main.async {
+//        interceptor.execute()
+//        self.completionBlock?(responseObject, error, false)
+//      }
+//    }
+  }
+  
+  func makeRequest() {
+    
+    var hasCache = false
+    
+    if self.cacheOption == .both || self.cacheOption == .cacheOnly {
+      hasCache = APICacheManager.shared.callBlock(self.completionBlock, ifCacheExistsForFileName: self.cacheFileName)
+    }
+    
+    if self.cacheOption == .both || self.cacheOption == .networkOnly || !hasCache {
+      var parameters = self.parameters
+      var urlParameters = self.urlParameters
+      var headers = self.extraHeaders ?? [:]
+      var path = self.path
+      var body: Data? = nil
+      
+        let keychain = KeychainSwift()
+        for authorizationHeader in APIConstants.authenticationHeaders {
+            if let authorizationHeaderValue = keychain.get(authorizationHeader) {
+                headers[authorizationHeader] = authorizationHeaderValue
             }
         }
-        //Aciona a tarefa
-        task.resume()
+        
+      // parameters in a GET request are always urlParameters
+      if self.method == .get, let bodyParameters = parameters {
+        if urlParameters == nil {
+          urlParameters = [:]
+        }
+        
+        bodyParameters.forEach { urlParameters?[$0] = $1 }
+        parameters = nil
+      }
+      
+      if let urlParameters = urlParameters {
+        let queryString = API.URLParameterEncoder.encode(parameters: urlParameters)
+        path = path.appending("?\(queryString)")
+      }
+      
+      if let parameters = parameters {
+        let hasDataParameters = API.checkForDataObjectsIn(Array(parameters.values))
+        if hasDataParameters {
+          let flattenedParameters = API.flatten(dictionary: parameters)
+          var multipartBuilder = API.MultipartFormDataBuilder()
+          
+          body = multipartBuilder.requestBody(with: flattenedParameters)
+          headers["Content-Type"] = multipartBuilder.contentTypeHeader
+        } else {
+          body = self.parameterEncoder.encode(parameters: parameters).data(using: .utf8)
+          headers["Content-Type"] = self.parameterEncoder.contentTypeHeader
+        }
+      }
+      
+      var request = URLRequest(url: URL(string: path, relativeTo: self.baseURL)!)
+      request.httpMethod = self.method.rawValue
+      request.httpBody = body
+      request.allHTTPHeaderFields = headers
+      
+      var task: URLSessionDataTask?
+      task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        API.RequestProgressWatcher.shared.remove(task: task)
+        
+        if let response = response as? HTTPURLResponse, response.statusCode <= 299 && error == nil {
+          self.handleSuccess(data: data, response: response)
+        } else {
+          self.handleError(data: data, response: response, error: error)
+        }
+      })
+      
+      API.RequestProgressWatcher.shared.add(task: task, forRequest: self)
+      task?.resume()
+      
+      self.task = task
+    }
+  }
+}
+
+extension API.RequestError: LocalizedError {
+  
+  public var errorDescription: String? {
+    if let responseObject = self.responseObject as? [String: Any], let error = responseObject["error"] as? String {
+      return error
+    } else if let responseObject = self.responseObject as? [String: Any], let errors = responseObject["errors"] as? [String] {
+      return errors[0]
+    } else if let urlResponse = self.urlResponse {
+      return HTTPURLResponse.localizedString(forStatusCode: urlResponse.statusCode)
+    }
+    
+    return self.originalError?.localizedDescription
+  }
+}
+
+extension APIRequest {
+    convenience init() {
+        self.init(method: .get, path: "", parameters: nil, urlParameters: nil, cacheOption: .networkOnly) { (_, _, _) in}
     }
 }
