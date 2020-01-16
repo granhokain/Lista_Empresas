@@ -15,6 +15,11 @@
 		A448155423CD36C2009392A1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448155323CD36C2009392A1 /* LoginPresenter.swift */; };
 		A448155623CD489B009392A1 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448155523CD489B009392A1 /* ApiRequest.swift */; };
 		A44E3790239DAB3B00048D80 /* ListaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E378F239DAB3B00048D80 /* ListaViewController.swift */; };
+		A45B75D123D0CB7E00DCC51A /* CompanyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B75D023D0CB7E00DCC51A /* CompanyListPresenter.swift */; };
+		A45B75D323D0D52500DCC51A /* Enterprises.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B75D223D0D52500DCC51A /* Enterprises.swift */; };
+		A46B66B423CF9E8000B93F2C /* EmpresaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B66B323CF9E8000B93F2C /* EmpresaCell.swift */; };
+		A46B66B623CFAAF300B93F2C /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B66B523CFAAF300B93F2C /* Company.swift */; };
+		A46B66B823CFAF9700B93F2C /* CompanyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B66B723CFAF9700B93F2C /* CompanyType.swift */; };
 		A4AD628B2399D4D400FB7119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD628A2399D4D400FB7119 /* AppDelegate.swift */; };
 		A4AD628D2399D4D400FB7119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD628C2399D4D400FB7119 /* SceneDelegate.swift */; };
 		A4AD628F2399D4D400FB7119 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD628E2399D4D400FB7119 /* LoginViewController.swift */; };
@@ -30,6 +35,7 @@
 		A4BCBFC923CE0ED3003A6F7D /* StringMapperKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCBFC823CE0ED3003A6F7D /* StringMapperKeys.swift */; };
 		A4BCBFD123CE87B3003A6F7D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCBFD023CE87B3003A6F7D /* Constants.swift */; };
 		A4BCBFD523CE8B15003A6F7D /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BCBFD423CE8B15003A6F7D /* Interceptor.swift */; };
+		A4C9BD7623D0A7F100861B26 /* CompanyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9BD7523D0A7F100861B26 /* CompanyService.swift */; };
 		A4D24825239DDEDD0018B44B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D24824239DDEDD0018B44B /* Coordinator.swift */; };
 		C00861FD6F8B772DD4CA6DBC /* Pods_Lista_Empresas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31FE7D069663CD58D9ED9364 /* Pods_Lista_Empresas.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +64,11 @@
 		A448155323CD36C2009392A1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		A448155523CD489B009392A1 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		A44E378F239DAB3B00048D80 /* ListaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaViewController.swift; sourceTree = "<group>"; };
+		A45B75D023D0CB7E00DCC51A /* CompanyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListPresenter.swift; sourceTree = "<group>"; };
+		A45B75D223D0D52500DCC51A /* Enterprises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enterprises.swift; sourceTree = "<group>"; };
+		A46B66B323CF9E8000B93F2C /* EmpresaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpresaCell.swift; sourceTree = "<group>"; };
+		A46B66B523CFAAF300B93F2C /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		A46B66B723CFAF9700B93F2C /* CompanyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyType.swift; sourceTree = "<group>"; };
 		A4AD62872399D4D400FB7119 /* Lista_Empresas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lista_Empresas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4AD628A2399D4D400FB7119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4AD628C2399D4D400FB7119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +86,7 @@
 		A4BCBFC823CE0ED3003A6F7D /* StringMapperKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMapperKeys.swift; sourceTree = "<group>"; };
 		A4BCBFD023CE87B3003A6F7D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A4BCBFD423CE8B15003A6F7D /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
+		A4C9BD7523D0A7F100861B26 /* CompanyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyService.swift; sourceTree = "<group>"; };
 		A4D24824239DDEDD0018B44B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EBEE082B660985F0CD429D74 /* Pods-Lista_Empresas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lista_Empresas.release.xcconfig"; path = "Target Support Files/Pods-Lista_Empresas/Pods-Lista_Empresas.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +139,9 @@
 				A448155023CD0F20009392A1 /* Investor.swift */,
 				A4BCBFC123CE0CA5003A6F7D /* Mappable.swift */,
 				A4BCBFC323CE0CCF003A6F7D /* Serializable.swift */,
+				A46B66B523CFAAF300B93F2C /* Company.swift */,
+				A46B66B723CFAF9700B93F2C /* CompanyType.swift */,
+				A45B75D223D0D52500DCC51A /* Enterprises.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				A448155323CD36C2009392A1 /* LoginPresenter.swift */,
+				A45B75D023D0CB7E00DCC51A /* CompanyListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -144,6 +160,7 @@
 			children = (
 				A448154B23CD0937009392A1 /* AuthenticationService.swift */,
 				A4BCBFBF23CE0745003A6F7D /* Authenticable.swift */,
+				A4C9BD7523D0A7F100861B26 /* CompanyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -155,6 +172,14 @@
 				A44E378F239DAB3B00048D80 /* ListaViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A46B66B223CF9E5200B93F2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A46B66B323CF9E8000B93F2C /* EmpresaCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A4AD627E2399D4D400FB7119 = {
@@ -179,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A4BCBFC723CE0EB8003A6F7D /* Utils */,
+				A46B66B223CF9E5200B93F2C /* Views */,
 				A44E3791239DB0CA00048D80 /* ViewController */,
 				A448155223CD350B009392A1 /* Presenter */,
 				A4D24820239DD9780018B44B /* DataSource */,
@@ -358,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45B75D123D0CB7E00DCC51A /* CompanyListPresenter.swift in Sources */,
 				A44E3790239DAB3B00048D80 /* ListaViewController.swift in Sources */,
 				A4BCBFC223CE0CA5003A6F7D /* Mappable.swift in Sources */,
 				A4BCBFC023CE0745003A6F7D /* Authenticable.swift in Sources */,
@@ -367,13 +394,18 @@
 				A4D24825239DDEDD0018B44B /* Coordinator.swift in Sources */,
 				A448154423CCF687009392A1 /* ApiCacheManager.swift in Sources */,
 				A4BCBFC623CE0E55003A6F7D /* User.swift in Sources */,
+				A46B66B823CFAF9700B93F2C /* CompanyType.swift in Sources */,
+				A46B66B423CF9E8000B93F2C /* EmpresaCell.swift in Sources */,
 				A448155423CD36C2009392A1 /* LoginPresenter.swift in Sources */,
+				A46B66B623CFAAF300B93F2C /* Company.swift in Sources */,
 				A4BCBFD123CE87B3003A6F7D /* Constants.swift in Sources */,
+				A45B75D323D0D52500DCC51A /* Enterprises.swift in Sources */,
 				A4AD628B2399D4D400FB7119 /* AppDelegate.swift in Sources */,
 				A4BCBFBB23CDFBB1003A6F7D /* Api.swift in Sources */,
 				A4BCBFBD23CDFFF6003A6F7D /* EmpresasError.swift in Sources */,
 				A4AD628D2399D4D400FB7119 /* SceneDelegate.swift in Sources */,
 				A448154C23CD0937009392A1 /* AuthenticationService.swift in Sources */,
+				A4C9BD7623D0A7F100861B26 /* CompanyService.swift in Sources */,
 				A448155623CD489B009392A1 /* ApiRequest.swift in Sources */,
 				A448155123CD0F20009392A1 /* Investor.swift in Sources */,
 				A4BCBFC923CE0ED3003A6F7D /* StringMapperKeys.swift in Sources */,
