@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var senhaTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButton(_ sender: Any) {
         let typedEmail = emailTextField.text
-        let typedPassword = senhaTextField.text
+        let typedPassword = passwordTextField.text
         guard let email = typedEmail, let password = typedPassword else {
             return
         }
@@ -61,11 +61,11 @@ extension LoginViewController: LoginProtocol {
     }
     
     func showAlert(with message: String) {
-        let mensagem = "Não foi possível realizar o login. Tente novamente mais tarde."
-        let alerta = UIAlertController(title: "Algo deu errado…", message: mensagem, preferredStyle: .alert)
+        let message = "Não foi possível realizar o login. Tente novamente mais tarde."
+        let alert = UIAlertController(title: "Algo deu errado…", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .cancel) { _ in }
-        alerta.addAction(ok)
-        self.present(alerta, animated: true, completion: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
     
     

@@ -37,4 +37,5 @@ struct Colors {
     static let blueGrey = #colorLiteral(red: 0.5411764706, green: 0.5529411765, blue: 0.6, alpha: 1)
     static let darkBlueSky = #colorLiteral(red: 0.2901960784, green: 0.5647058824, blue: 0.8862745098, alpha: 1)
     static let prussianBlue = #colorLiteral(red: 0, green: 0.2941176471, blue: 0.4078431373, alpha: 0.05265184859)
+    static let tableViewColor = #colorLiteral(red: 0.9215686275, green: 0.9137254902, blue: 0.8431372549, alpha: 1)
 }

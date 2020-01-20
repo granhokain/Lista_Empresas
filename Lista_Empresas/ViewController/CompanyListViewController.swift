@@ -1,5 +1,5 @@
 //
-//  ListaViewController.swift
+//  CompanyListViewController.swift
 //  Lista_Empresas
 //
 //  Created by Rafael Martins on 08/12/19.
@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ListaViewController: UIViewController {
+protocol CompanyListDelegate: class {
+    func setCompanyDetails(detail: String)
+}
+
+class CompanyListViewController: UIViewController {
     
     
     @IBOutlet weak var initialView: UIView!
@@ -22,7 +26,10 @@ class ListaViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var companyPresenter = CompanyListPresenter()
-    fileprivate var company = [Company]()
+    fileprivate var companies = [Company]()
+    fileprivate var coordinator = Coordinator()
+    weak var delegate: CompanyListDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +42,8 @@ class ListaViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableHeaderView = nil
         tableView.alwaysBounceVertical = false
-
+        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundColor = Colors.tableViewColor
     }
     
     @IBAction func showSearchView(_ sender: UIButton) {
@@ -64,7 +72,7 @@ class ListaViewController: UIViewController {
 
 }
 
-extension ListaViewController: CompanyListProtocol {
+extension CompanyListViewController: CompanyListProtocol {
     func startLoading() {
         
     }
@@ -74,20 +82,14 @@ extension ListaViewController: CompanyListProtocol {
     }
     
     func successfulRequestCompanyList(company: Enterprises) {
-//        guard let enterprises = company.enterprises else {
-//            return
-//        }
-        self.company = company.enterprises
+        self.companies = company.enterprises
         self.tableView.reloadData()
         self.initialBodyView.isHidden = true
         self.companyListView.isHidden = false
     }
     
     func successfulRequestAllCompanyList(company: Enterprises) {
-//        guard let enterprises = company.enterprises else {
-//            return
-//        }
-        self.company = company.enterprises
+        self.companies = company.enterprises
         self.tableView.reloadData()
         self.initialBodyView.isHidden = true
         self.companyListView.isHidden = false
@@ -96,47 +98,42 @@ extension ListaViewController: CompanyListProtocol {
     func showAlert(with message: String) {
         self.initialBodyView.isHidden = false
         self.companyListView.isHidden = true
-        let mensagem = "Não foi possível obter a empresa. Tente novamente mais tarde."
-        let alerta = UIAlertController(title: "Algo deu errado…", message: mensagem, preferredStyle: .alert)
+        let message = "Não foi possível obter a empresa. Tente novamente mais tarde."
+        let alert = UIAlertController(title: "Algo deu errado…", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .cancel) { _ in }
-        alerta.addAction(ok)
-        self.present(alerta, animated: true, completion: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
-extension ListaViewController: UITableViewDelegate, UITableViewDataSource {
+extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource {
    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return company.count
+        return companies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier:"rowEmpresas", for: indexPath) as? EmpresasCell else {
-            return EmpresasCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:"rowEmpresas", for: indexPath) as? CompanyCell else {
+            return CompanyCell()
         }
-        let enterprise = company[indexPath.row]
-//        switch cartao.modalidadeCartao.funcaoDebito.situacaoFuncao.status {
-//        case .desbloqueado:
-//            cell.bloquearViewClick = {
-//                self.cartaoSelecionadoBloqueio = cartao
-//                self.solicitarPositivacao()
-//            }
-//        case .bloqueado:
-//            cell.desbloquearViewClick = {
-//                self.cartaoSelecionadoBloqueio = cartao
-//                self.solicitarPositivacao()
-//            }
-//        }
-//        cell.ajustarViews()
+        let enterprise = companies[indexPath.row]
         cell.set(company: enterprise)
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let comp = companies[indexPath.row]
+        print(comp.enterpriseName!)
+        guard let detailCompany = comp.description else {
+            return
+        }
+        delegate?.setCompanyDetails(detail: detailCompany)
+        coordinator.showDetailScreen(viewController: self)
+    }
 }
 
