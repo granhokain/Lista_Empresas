@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var loginPresenter = LoginPresenter()
-    var coordinator = Coordinator()
+    var coordinator = LoginCoordinator()
     
     override func viewDidLoad() {
         super.viewDidLoad()

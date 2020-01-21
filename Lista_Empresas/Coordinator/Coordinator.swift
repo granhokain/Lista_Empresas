@@ -2,30 +2,27 @@
 //  Coordinator.swift
 //  Lista_Empresas
 //
-//  Created by Rafael Martins on 08/12/19.
-//  Copyright © 2019 Rafael Martins. All rights reserved.
+//  Created by Rafael Martins on 20/01/20.
+//  Copyright © 2020 Rafael Martins. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-final class Coordinator {
+protocol CoordinatorDelegate: class {
+    func coordinatorDidExit(_ coordinator: Coordinator)
+}
 
-    func showListScreen(viewController: UIViewController){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "listaEmpresas")
-        controller.modalPresentationStyle = .fullScreen
-        viewController.present(controller, animated: true, completion: nil)
-    }
+protocol Coordinator: CoordinatorDelegate {
+    var coordinatorDelegate: CoordinatorDelegate? { get set }
+    var childCoordinators: [Coordinator] { get set }
+    var navigationController: BaseNavigationController { get set }
     
-    func showDetailScreen(viewController: UIViewController){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "companyDatails")
-        controller.modalPresentationStyle = .fullScreen
-        viewController.present(controller, animated: true, completion: nil)
-    }
-    
-    func backScreen(viewController: UIViewController){
-        viewController.dismiss(animated: true, completion: nil)
+    func start()
+}
+
+extension Coordinator {
+    func coordinatorDidExit(_ coordinator: Coordinator) {
+        guard let index = self.childCoordinators.firstIndex(where: { $0 === coordinator }) else { return }
+        self.childCoordinators.remove(at: index)
     }
 }

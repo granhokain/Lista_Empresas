@@ -8,11 +8,11 @@
 
 import Foundation
 
-class AuthenticationService: APIRequest {
-    
+class AuthenticationService: APIRequest, Authenticable {
+
     let url = "https://empresas.ioasys.com.br/api/v1/users/auth/sign_in"
     
-    func login(email: String, password: String, completion: EmpresasResponseBlock<User>?)-> AuthenticationService {
+    func login(email: String, password: String, completion: APIRequest.EmpresasResponseBlock<User>?)-> AuthenticationService {
         let request = AuthenticationService(method: .post, path: url, parameters: ["email": email, "password": password], urlParameters: nil, cacheOption: .networkOnly) { (response, error, cache) in
             
             let fdcError = EmpresasError(response: response, error: error)

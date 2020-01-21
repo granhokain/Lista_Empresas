@@ -8,7 +8,7 @@
 
 import Foundation
 
-//protocol Authenticable: class {
-//    func login(email: String, password: String, completion: APIRequest.EmpresasResponseBlock<User>?)
-//    func logout(completion: APIRequest.EmpresasResponseBlock<JSONDictionary>?)
-//}
+protocol Authenticable: class {
+    func login(email: String, password: String, completion: APIRequest.EmpresasResponseBlock<User>?)-> AuthenticationService
+    func logout(completion: APIRequest.EmpresasResponseBlock<JSONDictionary>?)
+}

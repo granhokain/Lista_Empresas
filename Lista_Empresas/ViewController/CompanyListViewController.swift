@@ -27,7 +27,7 @@ class CompanyListViewController: UIViewController {
     
     fileprivate var companyPresenter = CompanyListPresenter()
     fileprivate var companies = [Company]()
-    fileprivate var coordinator = Coordinator()
+    fileprivate var coordinator = LoginCoordinator()
     weak var delegate: CompanyListDelegate?
     
 

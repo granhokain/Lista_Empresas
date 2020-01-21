@@ -5,4 +5,5 @@ target 'Lista_Empresas' do
     pod 'AFNetworking', '~> 3.0'
     pod 'KeychainSwift'
     pod 'lottie-ios'
+    pod 'Swinject'
 end

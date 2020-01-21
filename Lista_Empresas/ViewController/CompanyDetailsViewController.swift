@@ -14,7 +14,7 @@ class CompanyDetailsViewController: UIViewController {
     @IBOutlet weak var detailCompanyImage: UIImageView!
     @IBOutlet weak var companyDetail: UILabel!
     
-    fileprivate var coordinator = Coordinator()
+    fileprivate var coordinator = LoginCoordinator()
     
     
     override func viewDidLoad() {
