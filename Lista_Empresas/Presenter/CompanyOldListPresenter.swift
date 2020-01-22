@@ -16,7 +16,7 @@ protocol CompanyListProtocol: AnyObject {
     func showAlert(with message: String)
 }
 
-class CompanyListPresenter {
+class CompanyOldListPresenter {
     weak private var companyView: CompanyListProtocol?
     let repository = CompanyService()
     

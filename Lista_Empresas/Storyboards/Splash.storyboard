@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="AAW-hy-Elc">
+            <objects>
+                <viewController storyboardIdentifier="splash" id="33u-5u-Dy0" customClass="SplashViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HXp-fR-i5I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoHome" translatesAutoresizingMaskIntoConstraints="NO" id="gXo-uL-NDY">
+                                <rect key="frame" x="87" y="162" width="240" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="8kJ-LW-oyz"/>
+                                    <constraint firstAttribute="height" constant="85" id="Bed-QP-0Pb"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fUG-D6-IA5">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empresas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hk-he-Ke3">
+                                <rect key="frame" x="92" y="277" width="230" height="72"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="55"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.9137254901960784" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="60a-YH-hwA" firstAttribute="trailing" secondItem="gXo-uL-NDY" secondAttribute="trailing" constant="87" id="8de-zn-19r"/>
+                            <constraint firstItem="60a-YH-hwA" firstAttribute="trailing" secondItem="5hk-he-Ke3" secondAttribute="trailing" constant="92" id="G59-DF-hV0"/>
+                            <constraint firstItem="fUG-D6-IA5" firstAttribute="centerX" secondItem="HXp-fR-i5I" secondAttribute="centerX" id="L9L-do-H0T"/>
+                            <constraint firstItem="5hk-he-Ke3" firstAttribute="leading" secondItem="60a-YH-hwA" secondAttribute="leading" constant="92" id="Mkq-cB-8FP"/>
+                            <constraint firstItem="gXo-uL-NDY" firstAttribute="leading" secondItem="60a-YH-hwA" secondAttribute="leading" constant="87" id="Pbk-Ma-hQV"/>
+                            <constraint firstItem="gXo-uL-NDY" firstAttribute="top" secondItem="60a-YH-hwA" secondAttribute="top" constant="118" id="TWg-yj-aIr"/>
+                            <constraint firstItem="fUG-D6-IA5" firstAttribute="centerY" secondItem="HXp-fR-i5I" secondAttribute="centerY" id="kEt-M0-4BR"/>
+                            <constraint firstItem="5hk-he-Ke3" firstAttribute="top" secondItem="gXo-uL-NDY" secondAttribute="bottom" constant="30" id="yVO-eh-BYI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="60a-YH-hwA"/>
+                    </view>
+                    <connections>
+                        <outlet property="splashLoading" destination="fUG-D6-IA5" id="ahQ-in-TdE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="djv-JL-PS3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76.811594202898561" y="96.428571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logoHome" width="159" height="38"/>
+    </resources>
+</document>

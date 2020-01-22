@@ -32,8 +32,18 @@ class AuthCoordinator: Coordinator {
     }
     
     func showLoginView() {
-//        let loginWebViewController = container.resolveViewController(LoginViewController.self)
-//        loginWebViewController.delegate = self
-//        self.navigationController.setViewControllers([loginWebViewController], animated: true)
+        let loginViewController = container.resolveViewController(LoginViewController.self)
+        loginViewController.delegate = self
+        self.navigationController.setViewControllers([loginViewController], animated: true)
+    }
+}
+
+extension AuthCoordinator: LoginViewControllerDelegate {
+    func showHome(from viewController: LoginViewController) {
+            self.delegate?.showHome(self)
+    }
+    
+    func logout(from viewController: LoginViewController) {
+        
     }
 }

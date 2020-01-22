@@ -8,7 +8,12 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginViewControllerDelegate: class {
+    func showHome(from viewController: LoginViewController)
+    func logout(from viewController: LoginViewController)
+}
+
+class LoginViewController: UIViewController, SplashStoryboardLodable {
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -16,16 +21,21 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var loginPresenter = LoginPresenter()
-    var coordinator = LoginCoordinator()
+    var loginPresenter: LoginPresentable!
+    weak var delegate: LoginViewControllerDelegate!
+    var hasToken: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicator.hidesWhenStopped = true
-        loginPresenter.attachView(self)
         
+        loadingIndicator.hidesWhenStopped = true
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        loginPresenter = LoginPresenter(credentialManager: CredentialManager(), sessionManager: SessionManager(), authenticationService: AuthenticationService())
+        
+        loginPresenter.attachView(self)
+        loginPresenter.verifySession()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,7 +49,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        loginPresenter.loginRequest(with: email, password: password)
+        loginPresenter.requestLogin(email: email, password: password)
     }
     
     @objc func DismissKeyboard(){
@@ -47,7 +57,11 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: LoginProtocol {
+extension LoginViewController: LoginViewable {
+    func successfulRequestLogin(user: User) {
+        self.delegate.showHome(from: self)
+    }
+    
     func startLoading() {
         loadingIndicator.startAnimating()
     }
@@ -56,11 +70,13 @@ extension LoginViewController: LoginProtocol {
         loadingIndicator.stopAnimating()
     }
     
-    func successfulRequestLogin(user: User) {
-        coordinator.showListScreen(viewController: self)
+    func logedin(user: User) {}
+    
+    func errorRefreshToken() {
+        self.delegate.logout(from: self)
     }
     
-    func showAlert(with message: String) {
+    func showAlert(_ message: String) {
         let message = "Não foi possível realizar o login. Tente novamente mais tarde."
         let alert = UIAlertController(title: "Algo deu errado…", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .cancel) { _ in }
@@ -68,6 +84,7 @@ extension LoginViewController: LoginProtocol {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func showConnectionError(_ message: String) {}
     
+    func showLogin() {}
 }
-

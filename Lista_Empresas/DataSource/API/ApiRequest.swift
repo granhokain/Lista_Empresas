@@ -11,7 +11,7 @@ import KeychainSwift
 
 public class APIRequest {
     
-  typealias EmpresasResponseBlock<T> = (_ response: T?, _ error: EmpresasError?, _ cache: Bool) -> Void
+  typealias EmpresasResponseBlock<T> = (_ response: T?, _ error: CompanyError?, _ cache: Bool) -> Void
   typealias ResponseBlock<T> = (_ response: T?, _ error: API.RequestError?, _ cache: Bool) -> Void
   typealias ProgressBlock = (_ totalBytesSent: Int64, _ totalBytesExpectedToSend: Int64) -> Void
   

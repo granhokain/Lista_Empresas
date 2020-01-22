@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CompanyService: APIRequest {
+class CompanyService: APIRequest, CompanyServiceProtocol {
     
     let url = "https://empresas.ioasys.com.br/api/v1/enterprises"
     
@@ -16,7 +16,7 @@ class CompanyService: APIRequest {
         let params = ["name": companyName] as [String: Any]
         let request = CompanyService(method: .get, path: url, parameters: nil, urlParameters: params, cacheOption: .networkOnly) { (response, error, cache) in
             
-            let fdcError = EmpresasError(response: response, error: error)
+            let fdcError = CompanyError(response: response, error: error)
             
             if let userResponse = response as? JSONDictionary, fdcError == nil {
                 let companyRequest = Enterprises(dictionary: userResponse)
@@ -35,7 +35,7 @@ class CompanyService: APIRequest {
     func getAllCompany(completion: EmpresasResponseBlock<Enterprises>?)-> CompanyService {
         let request = CompanyService(method: .get, path: url, parameters: nil, urlParameters: nil, cacheOption: .networkOnly) { (response, error, cache) in
             
-            let fdcError = EmpresasError(response: response, error: error)
+            let fdcError = CompanyError(response: response, error: error)
             
             if let userResponse = response as? JSONDictionary, fdcError == nil {
                 let company = Enterprises(dictionary: userResponse)

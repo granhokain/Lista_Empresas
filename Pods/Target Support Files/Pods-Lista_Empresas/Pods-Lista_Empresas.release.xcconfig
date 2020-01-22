@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift" "${PODS_CONFIGURATION_BUILD_DIR}/Swinject" "${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift" "${PODS_CONFIGURATION_BUILD_DIR}/Swinject" "${PODS_CONFIGURATION_BUILD_DIR}/SwinjectAutoregistration" "${PODS_CONFIGURATION_BUILD_DIR}/SwinjectStoryboard" "${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift/KeychainSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Swinject/Swinject.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainSwift/KeychainSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Swinject/Swinject.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwinjectAutoregistration/SwinjectAutoregistration.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "CoreGraphics" -framework "KeychainSwift" -framework "Lottie" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "Swinject" -framework "SystemConfiguration" -framework "UIKit"
+OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "CoreGraphics" -framework "KeychainSwift" -framework "Lottie" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "Swinject" -framework "SwinjectAutoregistration" -framework "SwinjectStoryboard" -framework "SystemConfiguration" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

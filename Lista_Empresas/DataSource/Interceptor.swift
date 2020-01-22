@@ -11,11 +11,11 @@ import UIKit
 // Responsável por interceptar as chamadas e adicionar na lista de espera
 class Interceptor {
     
-    private var customError: EmpresasError?
+    private var customError: CompanyError?
     var service = AuthenticationService()
     
     init(response: Any?, error: API.RequestError?, request: APIRequest) {
-        customError = EmpresasError(response: response, error: error)
+        customError = CompanyError(response: response, error: error)
         /*
          Caso uma request dê erro e o status code seja 401, a request é adiciona para ser feita após
          o refresh token.

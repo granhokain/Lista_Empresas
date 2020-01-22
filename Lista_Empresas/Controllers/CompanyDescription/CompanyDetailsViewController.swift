@@ -14,7 +14,7 @@ class CompanyDetailsViewController: UIViewController {
     @IBOutlet weak var detailCompanyImage: UIImageView!
     @IBOutlet weak var companyDetail: UILabel!
     
-    fileprivate var coordinator = LoginCoordinator()
+    //fileprivate var coordinator = LoginCoordinator()
     
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class CompanyDetailsViewController: UIViewController {
     }
     
     @IBAction func backListButton(_ sender: UIButton) {
-        coordinator.backScreen(viewController: self)
+        //coordinator.backScreen(viewController: self)
     }
     
     

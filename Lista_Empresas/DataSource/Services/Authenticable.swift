@@ -10,5 +10,9 @@ import Foundation
 
 protocol Authenticable: class {
     func login(email: String, password: String, completion: APIRequest.EmpresasResponseBlock<User>?)-> AuthenticationService
+    func updateNotificationToken(token: String, completion: APIRequest.EmpresasResponseBlock<String>?)
     func logout(completion: APIRequest.EmpresasResponseBlock<JSONDictionary>?)
+    func token(with code: String, callback: APIRequest.EmpresasResponseBlock<Credential>?)
+    func refreshToken(with token: String, callback: APIRequest.EmpresasResponseBlock<Credential>?)
+    func userInfo(with credential: Credential, callback: APIRequest.EmpresasResponseBlock<User>?)
 }

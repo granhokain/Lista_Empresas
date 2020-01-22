@@ -12,7 +12,7 @@ protocol CompanyListDelegate: class {
     func setCompanyDetails(detail: String)
 }
 
-class CompanyListViewController: UIViewController {
+class CompanyListViewController: UIViewController, HomeStoryboardLodable {
     
     
     @IBOutlet weak var initialView: UIView!
@@ -25,9 +25,8 @@ class CompanyListViewController: UIViewController {
     @IBOutlet weak var companyListView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var companyPresenter = CompanyListPresenter()
+    var homePresenter: HomePresentable!
     fileprivate var companies = [Company]()
-    fileprivate var coordinator = LoginCoordinator()
     weak var delegate: CompanyListDelegate?
     
 
@@ -37,7 +36,7 @@ class CompanyListViewController: UIViewController {
         initialBodyView.isHidden = false
         searchView.isHidden = true
         companyListView.isHidden = true
-        companyPresenter.attachView(self)
+        //homePresenter.attachView(self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = nil
@@ -62,24 +61,19 @@ class CompanyListViewController: UIViewController {
         }
         
         if companyName == "" {
-            companyPresenter.getAllCompanyRequest()
+            homePresenter.getAllCompanyRequest()
         } else {
-            companyPresenter.getCompanyRequest(with: companyName)
+            homePresenter.getCompanyRequest(with: companyName)
         }
         
     }
-    
-
 }
 
-extension CompanyListViewController: CompanyListProtocol {
-    func startLoading() {
-        
-    }
+extension CompanyListViewController: HomeViewable {
     
-    func stopLoading() {
-        
-    }
+    func startLoading() {}
+    
+    func stopLoading() {}
     
     func successfulRequestCompanyList(company: Enterprises) {
         self.companies = company.enterprises
@@ -95,7 +89,7 @@ extension CompanyListViewController: CompanyListProtocol {
         self.companyListView.isHidden = false
     }
     
-    func showAlert(with message: String) {
+    func showAlert(_ message: String) {
         self.initialBodyView.isHidden = false
         self.companyListView.isHidden = true
         let message = "Não foi possível obter a empresa. Tente novamente mais tarde."
@@ -104,6 +98,8 @@ extension CompanyListViewController: CompanyListProtocol {
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func showConnectionError(_ message: String) {}
 }
 
 extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -133,7 +129,6 @@ extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource 
             return
         }
         delegate?.setCompanyDetails(detail: detailCompany)
-        coordinator.showDetailScreen(viewController: self)
     }
 }
 

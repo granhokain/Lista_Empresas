@@ -16,13 +16,19 @@ PODS:
     - AFNetworking/NSURLSession
   - KeychainSwift (19.0.0)
   - lottie-ios (3.1.5)
-  - Swinject (2.7.1)
+  - Swinject (2.6.2)
+  - SwinjectAutoregistration (2.6.1):
+    - Swinject (~> 2.6)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - KeychainSwift
   - lottie-ios
-  - Swinject
+  - Swinject (~> 2.6.0)
+  - SwinjectAutoregistration
+  - SwinjectStoryboard
 
 SPEC REPOS:
   trunk:
@@ -30,13 +36,17 @@ SPEC REPOS:
     - KeychainSwift
     - lottie-ios
     - Swinject
+    - SwinjectAutoregistration
+    - SwinjectStoryboard
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
-  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
+  SwinjectAutoregistration: d0de7e48db3601b8b130f2f84e5a8399e0224135
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: 6d7218ee039068a7c91b354f86d7587d135858f2
+PODFILE CHECKSUM: dbdbc9852d4fb63a3509402bab98dc25f4eef642
 
 COCOAPODS: 1.8.4
