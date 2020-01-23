@@ -29,18 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         credentialManager = CredentialManager()
         checkFirstUse()
         
-       // FirebaseApp.configure()
         setupNowPlayingBackground(application)
-        
-        //IQKeyboardManager.shared.enable = true
+    
         registerForPushNotifications()
-
-//        if let notification = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? JSONDictionary {
-//            let notification = FDCNotification(pushDictionary: notification)
-//            startAppCordinator(notification)
-//        } else {
-//            startAppCordinator()
-//        }
+        
+        startAppCordinator()
 
         return true
     }
@@ -50,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        //Messaging.messaging().shouldEstablishDirectChannel = false
+        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -71,20 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupNowPlayingBackground(_ application: UIApplication) {
-//        let audioSession = AVAudioSession.sharedInstance()
-//        do {
-//            try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.moviePlayback)
-//        }
-//        catch { }
-//
-//        application.beginReceivingRemoteControlEvents()
+
     }
 }
 
 extension AppDelegate {
 
     func startAppCordinator() {
-//        self.appCoordinator = AppCoordinator(navigationController: BaseNavigationController(), container: container, delegate: nil, notification: notification)
+        self.appCoordinator = AppCoordinator(navigationController: BaseNavigationController(), delegate: nil, container: container)
         self.appCoordinator?.start()
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -155,15 +142,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                            UNNotificationPresentationOptions.sound,
                            UNNotificationPresentationOptions.badge])
     }
-
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,
-//                                didReceive response: UNNotificationResponse,
-//                                withCompletionHandler completionHandler: @escaping () -> Void) {
-//        let userInfo = response.notification.request.content.userInfo as! JSONDictionary
-//
-//        let notification = FDCNotification(pushDictionary: userInfo)
-//        self.startAppCordinator(notification)
-//        completionHandler()
-//    }
 }
 

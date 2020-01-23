@@ -28,7 +28,7 @@ class SplashViewController: BaseViewController, SplashStoryboardLodable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        animationCompleted()
+        showAnimation()
         
     }
     

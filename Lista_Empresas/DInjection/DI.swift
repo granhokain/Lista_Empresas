@@ -17,6 +17,7 @@ extension AppDelegate {
     func setupDependencyInjection() {
         resolveSplash()
         resolveLogin()
+        resolveHome()
     }
     
     func resolveSplash() {

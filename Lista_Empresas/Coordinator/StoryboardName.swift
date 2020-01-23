@@ -9,7 +9,7 @@
 import Foundation
 
 enum StoryboardName: String {
-    case splash = "splash"
+    case splash = "Splash"
     case authentication = "Main"
     case home = "listaEmpresas"
     case companyDatails = "companyDatails"

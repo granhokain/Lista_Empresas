@@ -40,7 +40,7 @@ class AuthCoordinator: Coordinator {
 
 extension AuthCoordinator: LoginViewControllerDelegate {
     func showHome(from viewController: LoginViewController) {
-            self.delegate?.showHome(self)
+        self.delegate?.showHome(self)
     }
     
     func logout(from viewController: LoginViewController) {

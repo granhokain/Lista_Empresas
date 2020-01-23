@@ -13,7 +13,7 @@ protocol LoginViewControllerDelegate: class {
     func logout(from viewController: LoginViewController)
 }
 
-class LoginViewController: UIViewController, SplashStoryboardLodable {
+class LoginViewController: UIViewController, LoginStoryboardLodable {
     
     @IBOutlet weak var emailTextField: UITextField!
     

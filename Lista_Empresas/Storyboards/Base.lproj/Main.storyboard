@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
         <!--Company List View Controller-->
         <scene sceneID="mIF-UU-Egq">
             <objects>
-                <viewController storyboardIdentifier="listaEmpresas" id="7w2-Z4-N32" customClass="CompanyListViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="listaEmpresas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7w2-Z4-N32" customClass="CompanyListViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="6Rf-qE-kS1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -392,7 +392,7 @@
         <!--Company Details View Controller-->
         <scene sceneID="IaG-vJ-IIR">
             <objects>
-                <viewController storyboardIdentifier="companyDatails" id="bC7-1u-U7R" customClass="CompanyDetailsViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="companyDatails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bC7-1u-U7R" customClass="CompanyDetailsViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bQo-Ql-QHD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
