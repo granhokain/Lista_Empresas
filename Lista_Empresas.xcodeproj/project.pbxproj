@@ -12,6 +12,7 @@
 		A448155123CD0F20009392A1 /* Investor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448155023CD0F20009392A1 /* Investor.swift */; };
 		A448155423CD36C2009392A1 /* LoginOldPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448155323CD36C2009392A1 /* LoginOldPresenter.swift */; };
 		A448155623CD489B009392A1 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448155523CD489B009392A1 /* ApiRequest.swift */; };
+		A44CBB8323DA6E250074C881 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44CBB8223DA6E250074C881 /* Home.storyboard */; };
 		A44E3790239DAB3B00048D80 /* CompanyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44E378F239DAB3B00048D80 /* CompanyListViewController.swift */; };
 		A453C2E723D5F773008278BC /* CompanyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A453C2E623D5F773008278BC /* CompanyDetailsViewController.swift */; };
 		A4564AC423D743CF0019450B /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4564AC323D743CF0019450B /* LoginPresenter.swift */; };
@@ -27,6 +28,9 @@
 		A4564ADE23D75E210019450B /* StoryboardLodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4564ADD23D75E210019450B /* StoryboardLodable.swift */; };
 		A4564AE023D75FB30019450B /* StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4564ADF23D75FB30019450B /* StoryboardName.swift */; };
 		A4564AE223D7687C0019450B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4564AE123D7687C0019450B /* BaseViewController.swift */; };
+		A457584B23DB1E0C0009D846 /* CompanyDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457584A23DB1E0C0009D846 /* CompanyDetailCoordinator.swift */; };
+		A457584D23DB1F4D0009D846 /* CompanyDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457584C23DB1F4D0009D846 /* CompanyDetailPresenter.swift */; };
+		A457584F23DB34920009D846 /* CompanyDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A457584E23DB34920009D846 /* CompanyDetails.storyboard */; };
 		A45B75D123D0CB7E00DCC51A /* CompanyOldListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B75D023D0CB7E00DCC51A /* CompanyOldListPresenter.swift */; };
 		A45B75D323D0D52500DCC51A /* Enterprises.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B75D223D0D52500DCC51A /* Enterprises.swift */; };
 		A462C88B23D877D100107F1E /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A462C88A23D877D100107F1E /* Splash.storyboard */; };
@@ -72,6 +76,7 @@
 		A448155023CD0F20009392A1 /* Investor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Investor.swift; sourceTree = "<group>"; };
 		A448155323CD36C2009392A1 /* LoginOldPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOldPresenter.swift; sourceTree = "<group>"; };
 		A448155523CD489B009392A1 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		A44CBB8223DA6E250074C881 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A44E378F239DAB3B00048D80 /* CompanyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListViewController.swift; sourceTree = "<group>"; };
 		A453C2E623D5F773008278BC /* CompanyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsViewController.swift; sourceTree = "<group>"; };
 		A4564AC323D743CF0019450B /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -87,6 +92,9 @@
 		A4564ADD23D75E210019450B /* StoryboardLodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLodable.swift; sourceTree = "<group>"; };
 		A4564ADF23D75FB30019450B /* StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardName.swift; sourceTree = "<group>"; };
 		A4564AE123D7687C0019450B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A457584A23DB1E0C0009D846 /* CompanyDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailCoordinator.swift; sourceTree = "<group>"; };
+		A457584C23DB1F4D0009D846 /* CompanyDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailPresenter.swift; sourceTree = "<group>"; };
+		A457584E23DB34920009D846 /* CompanyDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompanyDetails.storyboard; sourceTree = "<group>"; };
 		A45B75D023D0CB7E00DCC51A /* CompanyOldListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyOldListPresenter.swift; sourceTree = "<group>"; };
 		A45B75D223D0D52500DCC51A /* Enterprises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enterprises.swift; sourceTree = "<group>"; };
 		A462C88A23D877D100107F1E /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 				A4564ACD23D749AF0019450B /* SplashPresenter.swift */,
 				A4564AC323D743CF0019450B /* LoginPresenter.swift */,
 				A462C89423D8972400107F1E /* HomePresenter.swift */,
+				A457584C23DB1F4D0009D846 /* CompanyDetailPresenter.swift */,
 				A448155323CD36C2009392A1 /* LoginOldPresenter.swift */,
 				A45B75D023D0CB7E00DCC51A /* CompanyOldListPresenter.swift */,
 				A4564ACB23D745E10019450B /* PresenterMapable.swift */,
@@ -273,6 +282,8 @@
 			children = (
 				A4AD62902399D4D400FB7119 /* Main.storyboard */,
 				A462C88A23D877D100107F1E /* Splash.storyboard */,
+				A44CBB8223DA6E250074C881 /* Home.storyboard */,
+				A457584E23DB34920009D846 /* CompanyDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -364,6 +375,7 @@
 				A462C88C23D87D5300107F1E /* SplashCoordinator.swift */,
 				A46B0F8923D7171700DD0D30 /* AuthCoordinator.swift */,
 				A462C89223D892A900107F1E /* HomeCoordinator.swift */,
+				A457584A23DB1E0C0009D846 /* CompanyDetailCoordinator.swift */,
 				A4564ADD23D75E210019450B /* StoryboardLodable.swift */,
 				A4564ADF23D75FB30019450B /* StoryboardName.swift */,
 			);
@@ -431,6 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4AD62972399D4D500FB7119 /* LaunchScreen.storyboard in Resources */,
+				A457584F23DB34920009D846 /* CompanyDetails.storyboard in Resources */,
+				A44CBB8323DA6E250074C881 /* Home.storyboard in Resources */,
 				A4AD62942399D4D500FB7119 /* Assets.xcassets in Resources */,
 				A4AD62922399D4D400FB7119 /* Main.storyboard in Resources */,
 				A462C88B23D877D100107F1E /* Splash.storyboard in Resources */,
@@ -509,6 +523,7 @@
 				A462C89723D897BC00107F1E /* CompanyServiceProtocol.swift in Sources */,
 				A4A9464723D6846000AC6510 /* Coordinator.swift in Sources */,
 				A4564AD423D74B1D0019450B /* Statics.swift in Sources */,
+				A457584B23DB1E0C0009D846 /* CompanyDetailCoordinator.swift in Sources */,
 				A448154423CCF687009392A1 /* ApiCacheManager.swift in Sources */,
 				A4BCBFC623CE0E55003A6F7D /* User.swift in Sources */,
 				A4564AD923D74E560019450B /* CredentialManageable.swift in Sources */,
@@ -530,6 +545,7 @@
 				A448154C23CD0937009392A1 /* AuthenticationService.swift in Sources */,
 				A462C89523D8972400107F1E /* HomePresenter.swift in Sources */,
 				A462C88D23D87D5300107F1E /* SplashCoordinator.swift in Sources */,
+				A457584D23DB1F4D0009D846 /* CompanyDetailPresenter.swift in Sources */,
 				A4C9BD7623D0A7F100861B26 /* CompanyService.swift in Sources */,
 				A448155623CD489B009392A1 /* ApiRequest.swift in Sources */,
 				A453C2E723D5F773008278BC /* CompanyDetailsViewController.swift in Sources */,

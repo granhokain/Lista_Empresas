@@ -43,6 +43,12 @@ class AppCoordinator: Coordinator {
         self.childCoordinators.append(homeCoordinator)
     }
     
+    func showCompanyDetail(detail: String) {
+        let companyDetailCoordinator = CompanyDetailCoordinator(navigationController: self.navigationController, container: container, delegate: self)
+        companyDetailCoordinator.start()
+        self.childCoordinators.append(companyDetailCoordinator)
+    }
+    
     func logout() {
         self.coordinatorDelegate?.coordinatorDidExit(self)
         self.showAuthentication()
@@ -69,8 +75,15 @@ extension AppCoordinator: AuthCoordinatorDelegate {
 
 // MARK: - HomeCoordinatorDelegate
 extension AppCoordinator: HomeCoordinatorDelegate {
+    func showCompanyDetail(_ coordinator: HomeCoordinator, detail: String) {
+        self.showCompanyDetail(detail: detail)
+    }
+    
+}
 
-    func didLogout(on coordinator: HomeCoordinator) {
-        logout()
+// MARK: - CompanyDetailsDelegate
+extension AppCoordinator: CompanyDetailCoordinatorDelegate {
+    func didLogout(on coordinator: CompanyDetailCoordinator) {
+        self.logout()
     }
 }

@@ -10,7 +10,8 @@ import Foundation
 import Swinject
 
 protocol HomeCoordinatorDelegate: CoordinatorDelegate {
-    func didLogout(on coordinator: HomeCoordinator)
+    func showCompanyDetail(_ coordinator: HomeCoordinator, detail: String)
+
 }
 
 class HomeCoordinator: Coordinator {
@@ -39,9 +40,7 @@ class HomeCoordinator: Coordinator {
 }
 
 extension HomeCoordinator: CompanyListDelegate {
-    func setCompanyDetails(detail: String) {
-        print("DETALHE DA EMPRESA:")
-        print(detail)
+    func showCompanyDetail(from viewController: CompanyListViewController, detail: String) {
+        self.delegate?.showCompanyDetail(self, detail: detail)
     }
-
 }

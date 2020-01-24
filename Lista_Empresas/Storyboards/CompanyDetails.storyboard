@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Company Details View Controller-->
+        <scene sceneID="YWs-5U-Z3s">
+            <objects>
+                <viewController storyboardIdentifier="CompanyDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Azw-Xw-Uew" customClass="CompanyDetailsViewController" customModule="Lista_Empresas" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6FR-9c-rSz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbq-VU-9cR">
+                                <rect key="frame" x="0.0" y="44" width="375" height="64"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFB-Ti-NPI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpK-6r-pkR">
+                                                <rect key="frame" x="329" y="20" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="icSearchCopy"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empresa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zd6-DO-VhR">
+                                                <rect key="frame" x="156" y="22.5" width="63" height="19"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh8-84-R1X">
+                                                <rect key="frame" x="8" y="20" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="back"/>
+                                                <connections>
+                                                    <action selector="backButton:" destination="P6U-g3-n13" eventType="touchUpInside" id="hiM-Dm-2JQ"/>
+                                                    <action selector="backListButton:" destination="Azw-Xw-Uew" eventType="touchUpInside" id="62P-kl-CGA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.87058823529999996" green="0.2784313725" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Zd6-DO-VhR" firstAttribute="centerX" secondItem="lFB-Ti-NPI" secondAttribute="centerX" id="NWV-OQ-hK9"/>
+                                            <constraint firstItem="Zd6-DO-VhR" firstAttribute="centerY" secondItem="lFB-Ti-NPI" secondAttribute="centerY" id="bK2-rs-Tdg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="5cQ-vv-iWb"/>
+                                    <constraint firstAttribute="trailing" secondItem="lFB-Ti-NPI" secondAttribute="trailing" id="6iP-g9-eiq"/>
+                                    <constraint firstItem="lFB-Ti-NPI" firstAttribute="leading" secondItem="Cbq-VU-9cR" secondAttribute="leading" id="CUh-CP-xSY"/>
+                                    <constraint firstItem="lFB-Ti-NPI" firstAttribute="top" secondItem="Cbq-VU-9cR" secondAttribute="top" id="Wiu-Ge-hvh"/>
+                                    <constraint firstAttribute="bottom" secondItem="lFB-Ti-NPI" secondAttribute="bottom" id="Zf7-K9-eYV"/>
+                                    <constraint firstAttribute="height" constant="64" id="jMw-ce-KeT"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgE1" translatesAutoresizingMaskIntoConstraints="NO" id="how-g3-fTx">
+                                <rect key="frame" x="0.0" y="108" width="375" height="184"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0x-jx-EfN">
+                                <rect key="frame" x="16" y="300" width="343" height="239"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="DGl-wX-8dd"/>
+                                    <constraint firstAttribute="height" constant="239" id="tWM-cP-UCh"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Cbq-VU-9cR" firstAttribute="top" secondItem="lDr-BD-9bO" secondAttribute="top" id="K9Q-3a-CTy"/>
+                            <constraint firstItem="how-g3-fTx" firstAttribute="leading" secondItem="Cbq-VU-9cR" secondAttribute="leading" id="LHu-fp-wDK"/>
+                            <constraint firstItem="Cbq-VU-9cR" firstAttribute="leading" secondItem="lDr-BD-9bO" secondAttribute="leading" id="MJ0-g4-Tva"/>
+                            <constraint firstItem="A0x-jx-EfN" firstAttribute="leading" secondItem="lDr-BD-9bO" secondAttribute="leading" constant="16" id="NzG-dP-YcT"/>
+                            <constraint firstItem="how-g3-fTx" firstAttribute="top" secondItem="Cbq-VU-9cR" secondAttribute="bottom" id="Y5r-z4-y0A"/>
+                            <constraint firstItem="lDr-BD-9bO" firstAttribute="trailing" secondItem="A0x-jx-EfN" secondAttribute="trailing" constant="16" id="bBR-fV-vv3"/>
+                            <constraint firstItem="Cbq-VU-9cR" firstAttribute="trailing" secondItem="lDr-BD-9bO" secondAttribute="trailing" id="v0f-5g-5yt"/>
+                            <constraint firstItem="A0x-jx-EfN" firstAttribute="top" secondItem="how-g3-fTx" secondAttribute="bottom" constant="8" symbolic="YES" id="xTQ-fe-zvE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lDr-BD-9bO"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="812"/>
+                    <connections>
+                        <outlet property="backButton" destination="bh8-84-R1X" id="gUm-DG-QAt"/>
+                        <outlet property="companyDetail" destination="A0x-jx-EfN" id="3s0-wZ-aJS"/>
+                        <outlet property="detailCompanyImage" destination="how-g3-fTx" id="whE-zE-3wl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMj-yX-Cjy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="P6U-g3-n13" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1930.4000000000001" y="112.3152709359606"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="50" height="50"/>
+        <image name="icSearchCopy" width="30" height="30"/>
+        <image name="imgE1" width="375" height="184"/>
+    </resources>
+</document>

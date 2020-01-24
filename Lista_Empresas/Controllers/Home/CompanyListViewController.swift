@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CompanyListDelegate: class {
-    func setCompanyDetails(detail: String)
+    func showCompanyDetail(from viewController: CompanyListViewController, detail: String)
 }
 
 class CompanyListViewController: UIViewController, HomeStoryboardLodable {
@@ -36,7 +36,6 @@ class CompanyListViewController: UIViewController, HomeStoryboardLodable {
         initialBodyView.isHidden = false
         searchView.isHidden = true
         companyListView.isHidden = true
-        //homePresenter.attachView(self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = nil
@@ -128,7 +127,7 @@ extension CompanyListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let detailCompany = comp.description else {
             return
         }
-        delegate?.setCompanyDetails(detail: detailCompany)
+        delegate?.showCompanyDetail(from: self, detail: detailCompany)
     }
 }
 

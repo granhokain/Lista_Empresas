@@ -53,4 +53,15 @@ extension AppDelegate {
             controller.homePresenter = presenter
         }
     }
+    
+    func resolveCompanyDetail() {
+        container.register(CompanyServiceProtocol.self) {_ in CompanyService() }
+        container.autoregister(CompanyDetailPresentable.self, initializer: CompanyDetailPresenter.init)
+        
+        container.storyboardInitCompleted(CompanyDetailsViewController.self) { (resolver, controller) in
+            let presenter = resolver.resolve(CompanyDetailPresentable.self)
+            presenter?.attachView(controller)
+            controller.companyDetailPresentable = presenter
+        }
+    }
 }

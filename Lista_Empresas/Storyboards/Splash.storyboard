@@ -35,13 +35,12 @@
                         <color key="backgroundColor" red="0.92156862745098034" green="0.9137254901960784" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="60a-YH-hwA" firstAttribute="trailing" secondItem="gXo-uL-NDY" secondAttribute="trailing" constant="87" id="8de-zn-19r"/>
-                            <constraint firstItem="60a-YH-hwA" firstAttribute="trailing" secondItem="5hk-he-Ke3" secondAttribute="trailing" constant="92" id="G59-DF-hV0"/>
+                            <constraint firstItem="5hk-he-Ke3" firstAttribute="centerX" secondItem="gXo-uL-NDY" secondAttribute="centerX" id="EeW-Xj-mbK"/>
                             <constraint firstItem="fUG-D6-IA5" firstAttribute="centerX" secondItem="HXp-fR-i5I" secondAttribute="centerX" id="L9L-do-H0T"/>
-                            <constraint firstItem="5hk-he-Ke3" firstAttribute="leading" secondItem="60a-YH-hwA" secondAttribute="leading" constant="92" id="Mkq-cB-8FP"/>
                             <constraint firstItem="gXo-uL-NDY" firstAttribute="leading" secondItem="60a-YH-hwA" secondAttribute="leading" constant="87" id="Pbk-Ma-hQV"/>
                             <constraint firstItem="gXo-uL-NDY" firstAttribute="top" secondItem="60a-YH-hwA" secondAttribute="top" constant="118" id="TWg-yj-aIr"/>
+                            <constraint firstItem="5hk-he-Ke3" firstAttribute="top" secondItem="gXo-uL-NDY" secondAttribute="bottom" constant="30" id="YMC-ER-0gj"/>
                             <constraint firstItem="fUG-D6-IA5" firstAttribute="centerY" secondItem="HXp-fR-i5I" secondAttribute="centerY" id="kEt-M0-4BR"/>
-                            <constraint firstItem="5hk-he-Ke3" firstAttribute="top" secondItem="gXo-uL-NDY" secondAttribute="bottom" constant="30" id="yVO-eh-BYI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="60a-YH-hwA"/>
                     </view>

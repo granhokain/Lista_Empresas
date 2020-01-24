@@ -21,8 +21,8 @@ class LoginViewController: UIViewController, LoginStoryboardLodable {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
-    var loginPresenter: LoginPresentable!
     weak var delegate: LoginViewControllerDelegate!
+    var loginPresenter: LoginPresentable!
     var hasToken: Bool = false
     
     override func viewDidLoad() {

@@ -11,6 +11,6 @@ import Foundation
 enum StoryboardName: String {
     case splash = "Splash"
     case authentication = "Main"
-    case home = "listaEmpresas"
-    case companyDatails = "companyDatails"
+    case home = "Home"
+    case companyDatails = "CompanyDetails"
 }

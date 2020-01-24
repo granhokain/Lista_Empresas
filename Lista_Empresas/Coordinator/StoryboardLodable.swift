@@ -16,6 +16,7 @@ protocol StoryboardLodable: AnyObject {
 protocol SplashStoryboardLodable: StoryboardLodable {}
 protocol LoginStoryboardLodable: StoryboardLodable {}
 protocol HomeStoryboardLodable: StoryboardLodable {}
+protocol CompanyDetailsStoryboardLodable: StoryboardLodable {}
 
 
 extension LoginStoryboardLodable where Self: UIViewController {
@@ -27,6 +28,12 @@ extension LoginStoryboardLodable where Self: UIViewController {
 extension HomeStoryboardLodable where Self: UIViewController {
     @nonobjc static var storyboardName: String {
         return StoryboardName.home.rawValue
+    }
+}
+
+extension CompanyDetailsStoryboardLodable where Self: UIViewController {
+    @nonobjc static var storyboardName: String {
+        return StoryboardName.companyDatails.rawValue
     }
 }
 
