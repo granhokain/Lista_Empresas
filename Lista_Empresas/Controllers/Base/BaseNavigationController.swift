@@ -22,7 +22,6 @@ class BaseNavigationController: UINavigationController {
     }
     
     func setDefault() {
-        //self.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = Colors.tabBarColor
     }

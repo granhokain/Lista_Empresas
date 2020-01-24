@@ -33,13 +33,6 @@ class CompanyDetailCoordinator: Coordinator {
     
     func showCompanyDetail() {
         let companyDetailsViewController = container.resolveViewController(CompanyDetailsViewController.self)
-        companyDetailsViewController.delegate = self
         self.navigationController.setViewControllers([companyDetailsViewController], animated: false)
-    }
-}
-
-extension CompanyDetailCoordinator: CompanyDetailsDelegate {
-    func didLogout(on coordinator: HomeCoordinator) {
-        self.delegate?.didLogout(on: self)
     }
 }

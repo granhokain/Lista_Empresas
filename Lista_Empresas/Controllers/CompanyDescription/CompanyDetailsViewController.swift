@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CompanyDetailsDelegate: class {
-    func didLogout(on coordinator: HomeCoordinator)
+    func didLogout()
 }
 
 class CompanyDetailsViewController: UIViewController, CompanyDetailsStoryboardLodable {
@@ -29,7 +29,7 @@ class CompanyDetailsViewController: UIViewController, CompanyDetailsStoryboardLo
     }
     
     @IBAction func backListButton(_ sender: UIButton) {
-        //coordinator.backScreen(viewController: self)
+        self.delegate?.didLogout()
     }
 }
 

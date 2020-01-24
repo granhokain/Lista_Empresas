@@ -9,10 +9,7 @@
 import Foundation
 import Swinject
 
-protocol HomeCoordinatorDelegate: CoordinatorDelegate {
-    func showCompanyDetail(_ coordinator: HomeCoordinator, detail: String)
-
-}
+protocol HomeCoordinatorDelegate: CoordinatorDelegate {}
 
 class HomeCoordinator: Coordinator {
     var container: Container
@@ -37,10 +34,28 @@ class HomeCoordinator: Coordinator {
         homeViewController.delegate = self
         self.navigationController.setViewControllers([homeViewController], animated: false)
     }
+    
+    func showPublicationDetail(_ detail: String) {
+        let detailVC = container.resolveViewController(CompanyDetailsViewController.self)
+        detailVC.companyDescription = detail
+        detailVC.delegate = self
+        self.navigationController.pushViewController(detailVC, animated: true)
+    }
+    
+    func back() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
 }
 
 extension HomeCoordinator: CompanyListDelegate {
     func showCompanyDetail(from viewController: CompanyListViewController, detail: String) {
-        self.delegate?.showCompanyDetail(self, detail: detail)
+        self.showPublicationDetail(detail)
+    }
+}
+
+extension HomeCoordinator: CompanyDetailsDelegate {
+    func didLogout() {
+        back()
     }
 }
